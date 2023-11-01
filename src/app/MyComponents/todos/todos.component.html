@@ -1,0 +1,19 @@
+<div class="container">
+    <h1 class="text-center mb-3">Todo List By SamkitSalot</h1>
+    <app-add-todo (todoAdd)="addTodo($event)" [NoOfActivity]="todos.length"></app-add-todo>
+    <h4>Your Todos</h4>
+    <!-- <input type="text" [(ngModel)]="samkit">
+    <div *ngIf="samkit.length>10; else elseBlock1">{{samkit}}</div>
+    <ng-template #elseBlock1>
+    <div>
+        variable size is less than 10
+    </div> 
+    </ng-template> -->
+    <div *ngIf="this.todos.length===0; else elseBlock">No Todos to display</div>
+    <ng-template #elseBlock>
+        <div *ngFor="let todo of todos; index as i">
+            <app-todo-item [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)"
+                (todoCheckbox)="toggleTodo($event)"></app-todo-item>
+        </div>
+    </ng-template>
+</div>
